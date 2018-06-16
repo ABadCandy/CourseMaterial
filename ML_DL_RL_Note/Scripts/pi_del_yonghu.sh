@@ -1,0 +1,1 @@
+cat < pi_yonghu.txt | xargs -n 1 userdel -r

@@ -1,0 +1,81 @@
+如果是为了使用PANDA下载fsl,我们建议使用fsl网站上前面两个Centos版本，这个版本在ubuntu下也是可以的
+不要使用Debian/Ubuntu版本，使用这个版本是用不了PANDA的
+将fsl拷贝到/home/username下
+打.开一个终端（Ctrl+Alt+T）
+1）切换到root用户下
+sudosu
+2）在/opt下创建software文件夹
+mkdir/opt/software
+3）将fsl软件包/opt/software下面 滕州生活网www.tz365.CN
+比如fsl的路径是/home/username/fsl-4.1.9-centos5_32.tar.gz 滕州生活网www.tz365.CN
+cp/home/username/fsl-4.1.9-centos5_32.tar.gz/opt/software
+4）进入/opt/software目录下
+cd/opt/software www.Tz365.cn
+5）解压压缩包 copyright tz365.cn
+tarzxvffsl-4.1.9-centos5_32.tar.gz
+6)将fsl的环境变量写到系统文件中（只需将下面命令拷贝到终端执行） copyright tz365.cn
+echo"FSLDIR=/opt/software/fsl">>/etc/profile
+echo".${FSLDIR}/etc/fslconf/fsl.sh">>/etc/profile
+echo"PATH=${FSLDIR}/bin:${PATH}">>/etc/profile
+echo"exportFSLDIRPATH">>/etc/profile
+重启机器，即可 www.tz365.Cn
+使用fsl copyright tz365.cn
+打开一个终端，输入fsl，即可
+
+
+
+1：进入http://www.fmrib.ox.ac.uk/fsl/
+2：点击download-Download FSL
+3，点I agree to the below。。。
+4,填写资料，下载相应的版本。 我下的是centos4-32（好像只能在linux下才能点的动download这个按钮) www.tz365.Cn
+5.下载后解压。解压命令：tar zxvf 你的文档
+6.根据你shell的模式，把以下两个“模式”下的四行/三行命令拷贝进终端窗口里：
+bash/sh/ksh模式: 滕州生活网(TZ365.cn)
+FSLDIR=/usr/local/fsl
+. ${FSLDIR}/etc/fslconf/fsl.sh
+PATH=${FSLDIR}/bin:${PATH}
+export FSLDIR PATH
+tcsh/csh模式：
+setenv FSLDIR /usr/local/fsl
+source ${FSLDIR}/etc/fslconf/fsl.csh
+setenv PATH ${FSLDIR}/bin:${PATH} www.Tz365.cn
+注意要根据情况进行修改。比如，我用的是另外的用户名，比如"zhang"，而且我把fsl下载到了桌面；那么我要把上面四行命令中的第一行相应的改为"
+FSLDIR=/home/zhang/Desktop/fsl"
+7.输入fsl，成功启动！
+注意：这是最精简版本的安装路程。网站上还有自动安装的小插件，但是我没成功。版本我下过好几个，最后用的centos4-32才成功。FSL的网站做的不够好，安装指令放的哪都有，没谱。安装这个东西真辛苦了一番，希望后来者可以借鉴
+
+
+Download FSL: http://fsl.fmrib.ox.ac.uk/fsldownloads/fsldownloadmain.html
+
+If you use fsl for PANDA, please download Linux centos version which can be used in Centos, Ubuntu, Fedora and so on. 
+
+Don't use Ubuntu/Debian version, PANDA will not work with it.
+
+
+Copy fsl to /home/username
+
+Open a terminal (Ctrl + Alt + T) 
+1) Switch to root user
+           sudo su
+2) Create a folder named 'Software' under /opt
+           mkdir /opt/software
+3) Copy fsl to /opt/Software
+           For example, the path of fsl is /home/username/fsl-5.0.0-centos5_64.tar.gz
+           cp /home/username/fsl-5.0.0-centos5_64.tar.gz     /opt/software
+4) Go to /opt/Software directory
+           cd  /opt/software
+5) Extract the package
+           tar zxvf fsl-5.0.0-centos5_64.tar.gz
+6) Write the environment variables to system file (Copy the commands to terminal) 
+           echo "FSLDIR=/opt/software/fsl" >> /etc/profile      // note ：directory
+           echo ". \${FSLDIR}/etc/fslconf/fsl.sh" >> /etc/profile
+           echo "PATH=\${FSLDIR}/bin:\${PATH}" >> /etc/profile
+           echo "export FSLDIR PATH" >> /etc/profile
+7) Reboot the computer 
+Open a terminal and input fsl, FSL GUI will open.
+
+输入fslview时出现libjepg.so.62:cannot open shared object file 
+这事需要找到libjepg.so.62文件，一般这个文件在lib下，找到这个文件后查看这个文件Link target，我查到的是/usr/lib/x86_64-linux-gnu/libjpeg.so.8.0.2。所以在命令框中输入sudo ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so.8.0.2 /lib/libjpeg.so.62
+
+
+And PANDA will work well.
